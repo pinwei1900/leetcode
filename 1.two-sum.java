@@ -1,35 +1,29 @@
 /*
  * [1] Two Sum
  *
- * https://leetcode.com/problems/two-sum/description/
+ * https://leetcode-cn.com/problems/two-sum/description/
  *
  * algorithms
- * Easy (38.93%)
- * Total Accepted:    1.1M
- * Total Submissions: 2.9M
+ * Easy (42.24%)
+ * Total Accepted:    130K
+ * Total Submissions: 307.7K
  * Testcase Example:  '[2,7,11,15]\n9'
  *
- * Given an array of integers, return indices of the two numbers such that they
- * add up to a specific target.
+ * 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
  * 
- * You may assume that each input would have exactly one solution, and you may
- * not use the same element twice.
+ * 你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
  * 
- * Example:
+ * 示例:
  * 
+ * 给定 nums = [2, 7, 11, 15], target = 9
  * 
- * Given nums = [2, 7, 11, 15], target = 9,
- * 
- * Because nums[0] + nums[1] = 2 + 7 = 9,
- * return [0, 1].
- * 
- * 
+ * 因为 nums[0] + nums[1] = 2 + 7 = 9
+ * 所以返回 [0, 1]
  * 
  * 
  */
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
