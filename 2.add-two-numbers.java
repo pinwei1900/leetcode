@@ -34,46 +34,23 @@ class Solution {
         ListNode head = new ListNode(0);
         ListNode temp = head;
 
-        while(l1 != null && l2 != null){
-            int val = l1.val + l2.val + temp.val;
+        while(l1 != null || l2 != null){
+            int x = (l1 != null) ? l1.val : 0;
+            int y = (l2 != null) ? l2.val : 0;
+            int val = x + y + temp.val;
+
             temp.val = val % 10;
             temp.next = new ListNode(val / 10);
 
-            l1 = l1.next;
-            l2 = l2.next;
+            if(l1!=null) l1 = l1.next;
+            if(l2!=null) l2 = l2.next;
+
             if(l1 ==null && l2 ==null && temp.next.val == 0){
                 temp.next = null;
                 break;
             }
             temp = temp.next;
         }
-
-        while(l1 != null){
-            int val = temp.val + l1.val;
-            temp.val = val % 10;
-            temp.next = new ListNode(val / 10);
-
-            l1 = l1.next;
-            if(l1 == null && temp.next.val == 0){
-                temp.next = null;
-                break;
-            }
-            temp = temp.next;
-        }
-        while(l2 != null){
-            int val = temp.val + l2.val;
-            temp.val = val % 10;
-            temp.next = new ListNode(val / 10);
-
-            l2 = l2.next;
-            if(l2 == null && temp.next.val == 0){
-                temp.next = null;
-                break;
-            }
-            temp = temp.next;
-        }
-
-
         return head;
     }
 }
