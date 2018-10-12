@@ -50,13 +50,8 @@ class Solution {
         int[] loc = new int[total];
 
         int j = 0;
-        for (int i = 0; i < numRows-1; i++) {
-            loc[j++] = i;
-        }
-        for (int i = numRows-1; i > 0; i--) {
-            loc[j++] = i;
-        }
-
+        for (int i = 0; i < numRows-1; i++) { loc[j++] = i; }
+        for (int i = numRows-1; i > 0; i--) { loc[j++] = i; }
 
         Map<Integer,StringBuilder> map = new HashMap();
         for (int i = 0; i < numRows; i++) {
@@ -64,13 +59,10 @@ class Solution {
         }
 
         for (int i = 0; i < s.length(); i++) {
-
             StringBuilder builder = map.get(loc[i%total]);
-            
             builder.append(s.charAt(i));
         }
-
-
+        
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < numRows; i++) {
             result.append(map.get(i));
