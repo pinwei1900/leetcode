@@ -34,14 +34,11 @@ class Solution {
 
         String result = "";
         for (int i = 0; i < s.length(); i++) {
-            
             if (s.substring(i).length() < result.length()) {
                 continue;
             }
-
             for (int j = i + result.length(); j < s.length(); j++) {
                 String sub = s.substring(i ,j + 1);
-
                 if(isPalindromic(sub)){
                     if(sub.length() > result.length()){
                         result = sub;
