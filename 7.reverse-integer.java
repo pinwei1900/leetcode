@@ -36,28 +36,26 @@
  */
 class Solution {
     public int reverse(int x) {
+        //判断正负
         boolean isNeg = x < 0 ? true : false;
 
+        //取出有效数字
         String str = String.valueOf(x);
         if(isNeg) str = str.substring(1);
+
+        //获取结果
         Long result = func(str);
 
-        if (result > Integer.MAX_VALUE) {
-            return 0;
-        }
-        if (0 - result < Integer.MIN_VALUE) {
-            return 0;
-        }
-        return isNeg ?  0-result.intValue(): result.intValue();
+        //判断结果是否满足范围条件
+        if (result > Integer.MAX_VALUE) { return 0; }
+        if (0 - result < Integer.MIN_VALUE) { return 0; }
+        
+        //返回数字
+        return isNeg ? 0 - result.intValue() : result.intValue();
     }
-
     private long func(String x) {
-        if (x.length() == 1)
-            return Long.valueOf(x);
-        long t = Long.valueOf(x.charAt(0) + "");
-        long y = func(x.substring(1));
-
-        long result = t + y * 10;
+        if (x.length() == 1) return Long.valueOf(x);
+        long result = Long.valueOf(x.charAt(0) + "") + func(x.substring(1)) * 10;
         return result;
     }
 }
