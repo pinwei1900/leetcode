@@ -106,14 +106,8 @@ class Solution {
             }
             return false;
         } else {
-            if (ch == '.') {
-                /* 每次跳过 0 ~ len 个字符 */
-                return skipLenMatch(len,s,pattern);
-            } else {
-                /* 每次跳过 0 ~ findFirstCharLenth(s) 个字符 */
-                return skipLenMatch(findFirstCharLenth(s ,ch),s,pattern);
-            }
-            
+            int skipLen = ch == '.' ? len : findFirstCharLenth(s ,ch);
+            return skipLenMatch(skipLen,s,pattern);   
         }
     }
 
