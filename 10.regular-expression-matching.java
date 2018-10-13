@@ -100,14 +100,10 @@ class Solution {
         char ch = last.charAt(0);
         
         if (last.length() == 1) {
-            if (s.length() == 0) {
+            if ( s.length() == 0 || ch != s.charAt(0) && ch != '.') {
                 return false;
             }
-            if (ch != s.charAt(0) && ch != '.') {
-                return false;
-            } else{
-                return match(s.substring(1, s.length()), pattern);
-            }
+            return match(s.substring(1, s.length()), pattern);
             
         } else {
             if (ch == '.') {
