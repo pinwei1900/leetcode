@@ -91,16 +91,16 @@ class Solution {
 
     private boolean match(String s, LinkedList<String> pattern) {
 
-        /* 只有模板和字符串都为空的时候才算是匹配成功 */
+        /* 匹配成功 */
         if (pattern.size() == 0 && s.length() == 0) { return true; }
-        /* 模板长度为0，但是字符串还剩余说明匹配不成功 */
+        /* 字符串剩余 */
         if (pattern.size() == 0 && s.length() != 0) { return false; }
 
         String last = pattern.removeLast();
-
         char ch = last.charAt(0);
+        
         if (last.length() == 1) {
-            if (s.length() == 0) {
+            if (s.length() == 0 ) {
                 return false;
             }
             if (ch == s.charAt(0) || ch == '.') {
