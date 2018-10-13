@@ -98,26 +98,25 @@ class Solution {
 
         String last = pattern.removeLast();
         char ch = last.charAt(0);
+        int len = s.length();
         
         if (last.length() == 1) {
-            if ( s.length() == 0 || ch != s.charAt(0) && ch != '.') {
-                return false;
+            if (len > 0 && (s.charAt(0) == ch || ch == '.')) {
+                return match(s.substring(1, len), pattern);
             }
-            return match(s.substring(1, s.length()), pattern);
+            return false;
             
         } else {
             if (ch == '.') {
-                /* 每次跳过 0 ~ s.length() 个字符 */
-                int len = s.length();
+                /* 每次跳过 0 ~ len 个字符 */
                 return skipLenMatch(len,s,pattern);
             } else {
                 /* 情况1：模板需跳过 */
-                if (s.length() == 0 || s.charAt(0) != ch) {
+                if (len == 0 || s.charAt(0) != ch) {
                     return match(s, pattern);
                 }
-                /* 情况2：每次跳过 0 ~ charLen 个字符 */
-                int len = findFirstCharLenth(s);
-                return skipLenMatch(len,s,pattern);
+                /* 情况2：每次跳过 0 ~ findFirstCharLenth(s) 个字符 */
+                return skipLenMatch(findFirstCharLenth(s),s,pattern);
             }
             
         }
