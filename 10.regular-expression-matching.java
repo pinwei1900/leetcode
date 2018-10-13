@@ -119,15 +119,14 @@ class Solution {
                     }
                 }
             } else if (isChar(ch)) {
-                /* 字符串长度为空，或者首字母不等于模板第一个字符说明此模板需要跳过 */
+                /* 模板需跳过 */
                 if (s.length() == 0 || s.charAt(0) != ch) {
                     return match(s, pattern);
                 }
 
-                /* 字符串首字母和模板第一个字母相同 */
+                /* 每次跳过 0 ~ charLen 个字符 */
                 if (s.charAt(0) == ch) {
-                    /* 第一种情况，跳过 0 ~ charLen 个字符，查看是否匹配 */
-                    int charLen = findFistEndChar(s);
+                    int charLen = findFirstCharLenth(s);
                     for (int i = 0; i <= charLen; i++) {
                         LinkedList<String> tempPattern = copyList(pattern);
                         boolean isFind = match(s.substring(i, s.length()), tempPattern);
@@ -141,7 +140,7 @@ class Solution {
         }
     }
 
-    private int findFistEndChar(String s) {
+    private int findFirstCharLenth(String s) {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) != s.charAt(0)) {
                 return i;
@@ -156,24 +155,6 @@ class Solution {
             result.add(str);
         }
         return result;
-    }
-
-    private String skipChar(String s) {
-        for (int i = 0; i < s.length(); i++) {
-            if (!isChar(s.charAt(i))) {
-                return s.substring(i);
-            }
-        }
-        return "";
-    }
-
-    private String moveFront(String s) {
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != s.charAt(0)) {
-                return s.substring(i);
-            }
-        }
-        return "";
     }
 
     public boolean isMatch(String s, String p) {
