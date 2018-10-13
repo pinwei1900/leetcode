@@ -95,13 +95,10 @@ class Solution {
         if (pattern.size() == 0 && s.length() == 0) {
             return true;
         }
-
         if (pattern.size() == 0 && s.length() != 0) {
             return false;
         }
-
         String last = pattern.removeLast();
-
         if (last.length() == 1) {
             if (s.length() == 0) {
                 return false;
@@ -112,7 +109,7 @@ class Solution {
             return false;
         } else {
             char ch = last.charAt(0);
-            if (ch == '.') {         
+            if (ch == '.') {
                 if (s.length() == 0) {
                     return match(s, pattern);
                 }
@@ -124,7 +121,7 @@ class Solution {
                         return true;
                     }
                 }
-                s = skipChar(s); 
+                s = skipChar(s);
                 return match(s, pattern);
             } else if (isChar(ch)) {
                 // 两种情况，一种是匹配这个字符，还有就是不匹配这个字符
@@ -140,7 +137,7 @@ class Solution {
                             return true;
                         }
                     }
-                    //直接把首字符全部跳过
+                    // 直接把首字符全部跳过
                     return match(moveFront(s), pattern);
 
                 }
@@ -149,7 +146,7 @@ class Solution {
         }
     }
 
-    private int findFistEndChar(String s){
+    private int findFistEndChar(String s) {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) != s.charAt(0)) {
                 return i;
