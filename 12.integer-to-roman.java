@@ -59,7 +59,7 @@
  * 示例 5:
  * 
  * 输入: 1994
- * 输出: "MCMXCIV"  MDXCLIXIII
+ * 输出: "MCMXCIV" 
 
  * 解释: M = 1000, CM = 900, XC = 90, IV = 4.
  * 
