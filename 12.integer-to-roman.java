@@ -68,26 +68,21 @@
 class Solution {
     public String intToRoman(int num) {
         int[] nums = {1,5,10,50,100,500,1000};
-        char[] conv = {'I','V','X','L','C','D','M'};
-
         String[] convert = {"I","V","X","L","C","D","M"};
 
-        // StringBuilder result = new StringBuilder();
         String ret = "";
         for (int i = nums.length - 1; i >= 0; i--) {
-
             int count = 0;
+            String temp = "";
             while(num >= nums[i]){
                 num -= nums[i];
+                temp += convert[i];
                 count++;
             }
             if (count == 4) {
-                // result.append(conv[i]).append(conv[i+1]);
                 ret += convert[i] + convert[i+1];
             } else{
-                char[] chars = new char[count];
-                Arrays.fill(chars, conv[i]);
-                ret += new String(chars);
+                ret += temp;
             }
         }
         return ret.replaceAll("DCD", "CM").replaceAll("LXL", "XC").replaceAll("VIV", "IX");
