@@ -72,14 +72,12 @@ class Solution {
 
         StringBuilder result = new StringBuilder();
         for (int i = nums.length - 1; i >= 0; i--) {
-            int number = nums[i];
-
+            
             int count = 0;
-            while(num >= number){
-                num -= number;
+            while(num >= nums[i]){
+                num -= nums[i];
                 count++;
             }
-
             if (count == 4) {
                 result.append(conv[i]).append(conv[i+1]);
             } else{
