@@ -91,7 +91,7 @@ class Solution {
 
     private boolean match(String s, LinkedList<String> pattern) {
 
-        /* 匹配成功 */
+        /* 成功 */
         if (pattern.size() == 0 && s.length() == 0) { return true; }
         /* 字符串剩余 */
         if (pattern.size() == 0 && s.length() != 0) { return false; }
@@ -100,7 +100,7 @@ class Solution {
         char ch = last.charAt(0);
         
         if (last.length() == 1) {
-            if (s.length() == 0 ) {
+            if (s.length() == 0) {
                 return false;
             }
             if (ch == s.charAt(0) || ch == '.') {
