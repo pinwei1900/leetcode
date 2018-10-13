@@ -99,19 +99,20 @@ class Solution {
         String last = pattern.removeLast();
         char ch = last.charAt(0);
         int len = s.length();
-        
+
         if (last.length() == 1) {
+            /* 字符串中间不匹配 */
             if (len == 0 || s.charAt(0) != ch && ch != '.') {
                 return false;
             }
             return match(s.substring(1, len), pattern);
         } else {
-            int skipLen = ch == '.' ? len : findFirstCharLenth(s ,ch);
-            return skipLenMatch(skipLen,s,pattern);   
+            int skipLen = ch == '.' ? len : findFirstCharLenth(s, ch);
+            return skipLenMatch(skipLen, s, pattern);
         }
     }
 
-    private boolean skipLenMatch(int length ,String s ,LinkedList<String> pattern ){
+    private boolean skipLenMatch(int length, String s, LinkedList<String> pattern) {
         for (int i = 0; i <= length; i++) {
             LinkedList<String> tempPattern = copyList(pattern);
             boolean isFind = match(s.substring(i, s.length()), tempPattern);
@@ -122,7 +123,7 @@ class Solution {
         return false;
     }
 
-    private int findFirstCharLenth(String s ,char ch) {
+    private int findFirstCharLenth(String s, char ch) {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) != ch) {
                 return i;
