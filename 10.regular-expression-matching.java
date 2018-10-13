@@ -91,14 +91,14 @@ class Solution {
 
     private boolean match(String s, LinkedList<String> pattern) {
 
+        int len = s.length();
         /* 成功 */
-        if (pattern.size() == 0 && s.length() == 0) { return true; }
+        if (pattern.size() == 0 && len == 0) { return true; }
         /* 字符串剩余 */
-        if (pattern.size() == 0 && s.length() != 0) { return false; }
+        if (pattern.size() == 0 && len != 0) { return false; }
 
         String last = pattern.removeLast();
         char ch = last.charAt(0);
-        int len = s.length();
 
         if (last.length() == 1) {
             /* 字符串中间不匹配 */
