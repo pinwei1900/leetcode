@@ -113,7 +113,7 @@ class Solution {
                 if (s.length() == 0) {
                     return match(s, pattern);
                 }
-                for (int i = 0; i < s.length(); i++) {
+                for (int i = 0; i <= s.length(); i++) {
                     LinkedList<String> tempPattern = copyList(pattern);
                     String temp = s.substring(i, s.length());
                     boolean isFind = match(temp, tempPattern);
@@ -121,7 +121,6 @@ class Solution {
                         return true;
                     }
                 }
-                return match("", pattern);
             } else if (isChar(ch)) {
                 /* 字符串长度为空，或者首字母不等于模板第一个字符说明此模板需要跳过 */
                 if (s.length() == 0 || s.charAt(0) != ch) {
