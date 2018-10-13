@@ -30,7 +30,7 @@ class Solution {
     public int maxArea(int[] height) {
         int result = 0;
         int len =  height.length;
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < height.length; i++) {
             for (int j = len - 1; j > i; j--) {
                 int area = Math.min(height[i], height[j]) * (j - i);
                 if (area > result) {
