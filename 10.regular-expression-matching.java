@@ -112,13 +112,13 @@ class Solution {
             if (ch == '.') {
                 for (int i = 0; i <= s.length(); i++) {
                     LinkedList<String> tempPattern = copyList(pattern);
-                    String temp = s.substring(i, s.length());
-                    boolean isFind = match(temp, tempPattern);
+                    boolean isFind = match(s.substring(i, s.length()), tempPattern);
                     if (isFind) {
                         return true;
                     }
                 }
-            } else if (isChar(ch)) {
+                return false;
+            } else {
                 /* 模板需跳过 */
                 if (s.length() == 0 || s.charAt(0) != ch) {
                     return match(s, pattern);
@@ -135,9 +135,22 @@ class Solution {
                         }
                     }
                 }
+                return false;
             }
-            return false;
+            
         }
+    }
+
+    private boolean skipLenMatch(int length ,String s ,LinkedList<String> pattern ){
+        int charLen = findFirstCharLenth(s);
+        for (int i = 0; i <= charLen; i++) {
+            LinkedList<String> tempPattern = copyList(pattern);
+            boolean isFind = match(s.substring(i, s.length()), tempPattern);
+            if (isFind) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private int findFirstCharLenth(String s) {
