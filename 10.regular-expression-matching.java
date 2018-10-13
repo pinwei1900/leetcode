@@ -90,7 +90,6 @@ class Solution {
     }
 
     private boolean match(String s, LinkedList<String> pattern) {
-
         int len = s.length();
         /* 成功 */
         if (pattern.size() == 0 && len == 0) { return true; }
