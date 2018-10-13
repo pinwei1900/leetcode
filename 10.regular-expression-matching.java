@@ -105,7 +105,6 @@ class Solution {
                 return match(s.substring(1, len), pattern);
             }
             return false;
-            
         } else {
             if (ch == '.') {
                 /* 每次跳过 0 ~ len 个字符 */
