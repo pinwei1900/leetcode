@@ -115,7 +115,7 @@ class Solution {
                     return match(s, pattern);
                 }
                 /* 情况2：每次跳过 0 ~ findFirstCharLenth(s) 个字符 */
-                return skipLenMatch(findFirstCharLenth(s ,s.charAt(0)),s,pattern);
+                return skipLenMatch(findFirstCharLenth(s ,ch),s,pattern);
             }
             
         }
