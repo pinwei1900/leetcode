@@ -110,9 +110,9 @@ class Solution {
         } else {
             char ch = last.charAt(0);
             if (ch == '.') {
-                if (s.length() == 0) {
-                    return match(s, pattern);
-                }
+                // if (s.length() == 0) {
+                //     return match(s, pattern);
+                // }
                 for (int i = 0; i <= s.length(); i++) {
                     LinkedList<String> tempPattern = copyList(pattern);
                     String temp = s.substring(i, s.length());
@@ -138,9 +138,6 @@ class Solution {
                             return true;
                         }
                     }
-                    /* 在第一种不匹配的时候 */
-                    // return match(moveFront(s), pattern);
-
                 }
             }
             return false;
