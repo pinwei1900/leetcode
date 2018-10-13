@@ -70,7 +70,10 @@ class Solution {
         int[] nums = {1,5,10,50,100,500,1000};
         char[] conv = {'I','V','X','L','C','D','M'};
 
-        StringBuilder result = new StringBuilder();
+        String[] convert = {"I","V","X","L","C","D","M"};
+
+        // StringBuilder result = new StringBuilder();
+        String ret = "";
         for (int i = nums.length - 1; i >= 0; i--) {
 
             int count = 0;
@@ -79,13 +82,14 @@ class Solution {
                 count++;
             }
             if (count == 4) {
-                result.append(conv[i]).append(conv[i+1]);
+                // result.append(conv[i]).append(conv[i+1]);
+                ret += convert[i] + convert[i+1];
             } else{
                 char[] chars = new char[count];
                 Arrays.fill(chars, conv[i]);
-                result.append(new String(chars));
+                ret += new String(chars);
             }
         }
-        return result.toString().replaceAll("DCD", "CM").replaceAll("LXL", "XC").replaceAll("VIV", "IX");
+        return ret.replaceAll("DCD", "CM").replaceAll("LXL", "XC").replaceAll("VIV", "IX");
     }
 }
