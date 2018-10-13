@@ -92,12 +92,12 @@ class Solution {
 
     private boolean match(String s, LinkedList<String> pattern) {
 
-        if (pattern.size() == 0 && s.length() == 0) {
-            return true;
-        }
-        if (pattern.size() == 0 && s.length() != 0) {
-            return false;
-        }
+        /* 只有模板和字符串都为空的时候才算是匹配成功 */
+        if (pattern.size() == 0 && s.length() == 0) { return true; }
+
+        /* 模板长度为0，但是字符串还剩余说明匹配不成功 */
+        if (pattern.size() == 0 && s.length() != 0) { return false; }
+
         String last = pattern.removeLast();
         if (last.length() == 1) {
             if (s.length() == 0) {
@@ -124,11 +124,14 @@ class Solution {
                 s = skipChar(s);
                 return match(s, pattern);
             } else if (isChar(ch)) {
-                // 两种情况，一种是匹配这个字符，还有就是不匹配这个字符
+                /* 字符串长度为空，或者首字母不等于模板第一个字符说明此模板需要跳过 */
                 if (s.length() == 0 || s.charAt(0) != ch) {
                     return match(s, pattern);
                 }
+
+                /* 字符串首字母和模板第一个字母相同 */
                 if (s.charAt(0) == ch) {
+                    /* 第一种情况，跳过 0 ~ charLen 个字符，查看是否匹配 */
                     int charLen = findFistEndChar(s);
                     for (int i = 0; i < charLen; i++) {
                         LinkedList<String> tempPattern = copyList(pattern);
@@ -137,7 +140,7 @@ class Solution {
                             return true;
                         }
                     }
-                    // 直接把首字符全部跳过
+                    /* 在第一种不匹配的时候 */
                     return match(moveFront(s), pattern);
 
                 }
