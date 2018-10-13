@@ -70,7 +70,9 @@ class Solution {
         int[] nums = {1,5,10,50,100,500,1000};
         String[] convert = {"I","V","X","L","C","D","M"};
 
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
+
+        String last = "";
         for (int i = nums.length - 1; i >= 0; i--) {
             int count = 0;
             String temp = "";
@@ -80,15 +82,18 @@ class Solution {
                 count++;
             }
             if (count == 4) {
-                if (ret.endsWith(convert[i+1])) {
-                    ret = ret.substring(0 ,ret.length() -1) + convert[i] + convert[i+2];
+                if (last == convert[i+1]) {
+                    ret.deleteCharAt(ret.length() -1).append(convert[i] + convert[i+2]);
+                    last = convert[i+2];
                 }else{
-                    ret += convert[i] + convert[i+1];
+                    ret.append(convert[i] + convert[i+1]);
+                    last = convert[i+1];
                 }
-            } else{
-                ret += temp;
+            } else if(count != 0){
+                ret.append(temp);
+                last = convert[i];
             }
         }
-        return ret;
+        return ret.toString();
     }
 }
