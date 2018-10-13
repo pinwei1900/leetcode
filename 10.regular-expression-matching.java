@@ -115,7 +115,7 @@ class Solution {
                     return match(s, pattern);
                 }
                 /* 情况2：每次跳过 0 ~ findFirstCharLenth(s) 个字符 */
-                return skipLenMatch(findFirstCharLenth(s),s,pattern);
+                return skipLenMatch(findFirstCharLenth(s ,s.charAt(0)),s,pattern);
             }
             
         }
@@ -132,9 +132,9 @@ class Solution {
         return false;
     }
 
-    private int findFirstCharLenth(String s) {
+    private int findFirstCharLenth(String s ,char ch) {
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != s.charAt(0)) {
+            if (s.charAt(i) != ch) {
                 return i;
             }
         }
