@@ -81,9 +81,11 @@ class Solution {
         LinkedList<String> result = new LinkedList();
         for (int i = p.length() - 1; i >= 0; i--) {
             char curr = p.charAt(i);
-            if (curr == '*') { // 先判断会出现两种字符的情况
+            if (curr == '*') {
+                /* 添加'[a-z]*' */
                 result.add(String.valueOf(p.charAt(--i)) + curr);
-            } else if (isChar(curr) || curr == '.') { // 判断出现一个字符的情况
+            } else {
+                /* 添加'[a-z.]' */
                 result.add(String.valueOf(curr));
             }
         }
@@ -108,27 +110,20 @@ class Solution {
             }
             return false;
         } else {
-            char ch = last.charAt(0);
+            char ch = last.charAt(0); //首字符只有 '.' 和 字母
             if (ch == '.') {
-                return skipLenMatch(s.length(),s,pattern);
-
-                // for (int i = 0; i <= s.length(); i++) {
-                //     LinkedList<String> tempPattern = copyList(pattern);
-                //     boolean isFind = match(s.substring(i, s.length()), tempPattern);
-                //     if (isFind) {
-                //         return true;
-                //     }
-                // }
-                // return false;
+                /* 每次跳过 0 ~ s.length() 个字符 */
+                int len = s.length();
+                return skipLenMatch(len,s,pattern);
             } else {
-                /* 模板需跳过 */
+                /* 情况1：模板需跳过 */
                 if (s.length() == 0 || s.charAt(0) != ch) {
                     return match(s, pattern);
                 }
 
-                /* 每次跳过 0 ~ charLen 个字符 */
-                int charLen = findFirstCharLenth(s);
-                return skipLenMatch(charLen,s,pattern);
+                /* 情况2：每次跳过 0 ~ charLen 个字符 */
+                int len = findFirstCharLenth(s);
+                return skipLenMatch(len,s,pattern);
             }
             
         }
