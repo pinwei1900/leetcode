@@ -103,10 +103,12 @@ class Solution {
             if (s.length() == 0) {
                 return false;
             }
-            if (ch == s.charAt(0) || ch == '.') {
+            if (ch != s.charAt(0) && ch != '.') {
+                return false;
+            } else{
                 return match(s.substring(1, s.length()), pattern);
             }
-            return false;
+            
         } else {
             if (ch == '.') {
                 /* 每次跳过 0 ~ s.length() 个字符 */
