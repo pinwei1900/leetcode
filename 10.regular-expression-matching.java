@@ -110,9 +110,6 @@ class Solution {
         } else {
             char ch = last.charAt(0);
             if (ch == '.') {
-                // if (s.length() == 0) {
-                //     return match(s, pattern);
-                // }
                 for (int i = 0; i <= s.length(); i++) {
                     LinkedList<String> tempPattern = copyList(pattern);
                     String temp = s.substring(i, s.length());
