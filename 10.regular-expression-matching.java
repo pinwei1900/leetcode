@@ -73,9 +73,6 @@ import java.util.List;
  * 
  */
 class Solution {
-    private boolean isChar(char ch) {
-        return ch >= 'a' && ch <= 'z';
-    }
 
     private LinkedList<String> split(String p) {
         LinkedList<String> result = new LinkedList();
@@ -96,21 +93,21 @@ class Solution {
 
         /* 只有模板和字符串都为空的时候才算是匹配成功 */
         if (pattern.size() == 0 && s.length() == 0) { return true; }
-
         /* 模板长度为0，但是字符串还剩余说明匹配不成功 */
         if (pattern.size() == 0 && s.length() != 0) { return false; }
 
         String last = pattern.removeLast();
+
+        char ch = last.charAt(0);
         if (last.length() == 1) {
             if (s.length() == 0) {
                 return false;
             }
-            if (last.charAt(0) == s.charAt(0) || last.charAt(0) == '.') {
+            if (ch == s.charAt(0) || ch == '.') {
                 return match(s.substring(1, s.length()), pattern);
             }
             return false;
         } else {
-            char ch = last.charAt(0); //首字符只有 '.' 和 字母
             if (ch == '.') {
                 /* 每次跳过 0 ~ s.length() 个字符 */
                 int len = s.length();
@@ -120,7 +117,6 @@ class Solution {
                 if (s.length() == 0 || s.charAt(0) != ch) {
                     return match(s, pattern);
                 }
-
                 /* 情况2：每次跳过 0 ~ charLen 个字符 */
                 int len = findFirstCharLenth(s);
                 return skipLenMatch(len,s,pattern);
