@@ -80,11 +80,15 @@ class Solution {
                 count++;
             }
             if (count == 4) {
-                ret += convert[i] + convert[i+1];
+                if (ret.endsWith(convert[i+1])) {
+                    ret = ret.substring(0 ,ret.length() -1) + convert[i] + convert[i+2];
+                }else{
+                    ret += convert[i] + convert[i+1];
+                }
             } else{
                 ret += temp;
             }
         }
-        return ret.replaceAll("DCD", "CM").replaceAll("LXL", "XC").replaceAll("VIV", "IX");
+        return ret;
     }
 }
