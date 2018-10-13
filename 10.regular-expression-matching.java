@@ -110,14 +110,16 @@ class Solution {
         } else {
             char ch = last.charAt(0);
             if (ch == '.') {
-                for (int i = 0; i <= s.length(); i++) {
-                    LinkedList<String> tempPattern = copyList(pattern);
-                    boolean isFind = match(s.substring(i, s.length()), tempPattern);
-                    if (isFind) {
-                        return true;
-                    }
-                }
-                return false;
+                return skipLenMatch(s.length(),s,pattern);
+
+                // for (int i = 0; i <= s.length(); i++) {
+                //     LinkedList<String> tempPattern = copyList(pattern);
+                //     boolean isFind = match(s.substring(i, s.length()), tempPattern);
+                //     if (isFind) {
+                //         return true;
+                //     }
+                // }
+                // return false;
             } else {
                 /* 模板需跳过 */
                 if (s.length() == 0 || s.charAt(0) != ch) {
@@ -133,8 +135,7 @@ class Solution {
     }
 
     private boolean skipLenMatch(int length ,String s ,LinkedList<String> pattern ){
-        int charLen = findFirstCharLenth(s);
-        for (int i = 0; i <= charLen; i++) {
+        for (int i = 0; i <= length; i++) {
             LinkedList<String> tempPattern = copyList(pattern);
             boolean isFind = match(s.substring(i, s.length()), tempPattern);
             if (isFind) {
