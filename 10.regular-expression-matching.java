@@ -111,9 +111,9 @@ class Solution {
                 return skipLenMatch(len,s,pattern);
             } else {
                 /* 情况1：模板需跳过 */
-                if (len == 0 || s.charAt(0) != ch) {
-                    return match(s, pattern);
-                }
+                // if (len == 0 || s.charAt(0) != ch) {
+                //     return match(s, pattern);
+                // }
                 /* 情况2：每次跳过 0 ~ findFirstCharLenth(s) 个字符 */
                 return skipLenMatch(findFirstCharLenth(s ,ch),s,pattern);
             }
