@@ -71,14 +71,13 @@ class Solution {
         String[] convert = {"I","V","X","L","C","D","M"};
 
         StringBuilder ret = new StringBuilder();
-
         String last = "";
         for (int i = nums.length - 1; i >= 0; i--) {
             int count = 0;
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
             while(num >= nums[i]){
                 num -= nums[i];
-                temp += convert[i];
+                temp.append(convert[i]);
                 count++;
             }
             if (count == 4) {
