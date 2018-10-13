@@ -131,7 +131,7 @@ class Solution {
                 if (s.charAt(0) == ch) {
                     /* 第一种情况，跳过 0 ~ charLen 个字符，查看是否匹配 */
                     int charLen = findFistEndChar(s);
-                    for (int i = 0; i < charLen; i++) {
+                    for (int i = 0; i <= charLen; i++) {
                         LinkedList<String> tempPattern = copyList(pattern);
                         boolean isFind = match(s.substring(i, s.length()), tempPattern);
                         if (isFind) {
@@ -139,7 +139,7 @@ class Solution {
                         }
                     }
                     /* 在第一种不匹配的时候 */
-                    return match(moveFront(s), pattern);
+                    // return match(moveFront(s), pattern);
 
                 }
             }
