@@ -126,14 +126,7 @@ class Solution {
 
                 /* 每次跳过 0 ~ charLen 个字符 */
                 int charLen = findFirstCharLenth(s);
-                for (int i = 0; i <= charLen; i++) {
-                    LinkedList<String> tempPattern = copyList(pattern);
-                    boolean isFind = match(s.substring(i, s.length()), tempPattern);
-                    if (isFind) {
-                        return true;
-                    }
-                }
-                return false;
+                return skipLenMatch(charLen,s,pattern);
             }
             
         }
