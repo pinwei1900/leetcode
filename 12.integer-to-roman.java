@@ -66,10 +66,10 @@
  */
 
 class Solution {
-    int[] nums = {1,5,10,50,100,500,1000};
-    String[] convert = {"I","V","X","L","C","D","M"};
-
     public String intToRoman(int num) {
+        int[] nums = {1,5,10,50,100,500,1000};
+        String[] convert = {"I","V","X","L","C","D","M"};
+
         StringBuilder ret = new StringBuilder();
         String last = "";
         for (int i = nums.length - 1; i >= 0; i--) {
