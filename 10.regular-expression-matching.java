@@ -101,20 +101,10 @@ class Solution {
         int len = s.length();
         
         if (last.length() == 1) {
-            if (len == 0) {
+            if (len == 0 || s.charAt(0) != ch && ch != '.') {
                 return false;
             }
-
-            if (s.charAt(0) != ch && ch != '.') {
-                return false;
-            }
-
             return match(s.substring(1, len), pattern);
-
-            // if (len > 0 && (s.charAt(0) == ch || ch == '.')) {
-            //     return match(s.substring(1, len), pattern);
-            // }
-            // return false;
         } else {
             int skipLen = ch == '.' ? len : findFirstCharLenth(s ,ch);
             return skipLenMatch(skipLen,s,pattern);   
