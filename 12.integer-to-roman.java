@@ -72,7 +72,7 @@ class Solution {
 
         StringBuilder result = new StringBuilder();
         for (int i = nums.length - 1; i >= 0; i--) {
-            
+
             int count = 0;
             while(num >= nums[i]){
                 num -= nums[i];
@@ -86,8 +86,6 @@ class Solution {
                 result.append(new String(chars));
             }
         }
-
-
         return result.toString().replaceAll("DCD", "CM").replaceAll("LXL", "XC").replaceAll("VIV", "IX");
     }
 }
