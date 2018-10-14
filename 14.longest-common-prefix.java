@@ -37,8 +37,7 @@ class Solution {
         if (strs.length == 1) { return strs[0]; }
 
         String result = "";
-        int i = 0;
-        for (; i < strs[0].length(); i++) {
+        for (int i = 0 ; i < strs[0].length(); i++) {
             boolean isComm = true;
             char temp = strs[0].charAt(i);
             for (int j = 1; j < strs.length; j++) {
