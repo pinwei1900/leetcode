@@ -23,10 +23,10 @@ import java.util.Arrays;
 class Solution {
 
     private int findClosedTarget(int[] nums, int start, int end, int target, int len) {
-        if (len == 0) { // 如果已经找到三个数字了， 就直接返回
+        if (len == 0) {
             return target;
         }
-        if (end - start < len) { // 如果长度不够了，就直接返回最大值
+        if (end - start < len) {
             return Integer.MAX_VALUE;
         }
         int value1 = findClosedTarget(nums, start + 1, end, target - nums[start], len - 1);
