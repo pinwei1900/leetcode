@@ -40,7 +40,6 @@ class Solution {
         int i = 0;
         for (; i < strs[0].length(); i++) {
             boolean isComm = true;
-
             char temp = strs[0].charAt(i);
             for (int j = 1; j < strs.length; j++) {
                 int len = strs[j].length();
@@ -54,7 +53,6 @@ class Solution {
                     break;
                 }
             }
-
             if (isComm) {
                 result = strs[0].substring(0 , i + 1);
             } else {
