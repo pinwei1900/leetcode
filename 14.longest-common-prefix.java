@@ -34,22 +34,29 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) { return ""; }
+        if (strs.length == 1) { return strs[0]; }
 
         String result = "";
-        int i = 1;
-        for (; i <= strs[0].length(); i++) {
+        int i = 0;
+        for (; i < strs[0].length(); i++) {
             boolean isComm = true;
 
-            String temp = strs[0].substring(0,i);
+            char temp = strs[0].charAt(i);
             for (int j = 1; j < strs.length; j++) {
-                if (!strs[j].startsWith(temp)) {
+                int len = strs[j].length();
+                if (i < len) {
+                    if (strs[j].charAt(i) != temp) {
+                        isComm = false;
+                        break;
+                    }
+                } else {
                     isComm = false;
                     break;
                 }
             }
 
             if (isComm) {
-                result = temp;
+                result = strs[0].substring(0 , i + 1);
             } else {
                 break;
             }
