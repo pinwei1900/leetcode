@@ -33,55 +33,43 @@
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
 class Solution {
-
-    List<List<Integer>> result = new ArrayList<>();
-    int ret;
-    int size;
-
-    Set<String> strSet = new HashSet<>();
-
-    List<Integer> arrayToList(List<Integer> source, Integer... add) {
-        List<Integer> target = new ArrayList<>();
-        for (int i = 0; i < source.size(); i++) {
-            target.add(source.get(i));
-        }
-        for (int i = 0; i < add.length; i++) {
-            target.add(add[i]);
-        }
-        return target;
-    }
-
-    private void findClosedTarget(int[] nums, int start, List<Integer> target, int sum) {
-
-        if (target.size() == size) {
-            String tempStr = target.toString();
-            if (sum != ret || strSet.contains(tempStr)) {
-                return;
-            }
-            strSet.add(tempStr);
-            result.add(target);
-            return;
-        }
-
-        if (nums.length - start < size - target.size()) {
-            return;
-        }
-
-        findClosedTarget(nums, start + 1, arrayToList(target, nums[start]), sum + nums[start]);
-        findClosedTarget(nums, start + 1, arrayToList(target), sum);
-    }
-
     public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Set<String> keySet = new HashSet<>();
+
         Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 3; i++) {
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                int m = j + 1, n = nums.length - 1;
+                while (m < n) {
+                    int sum = nums[i] + nums[j] + nums[m] + nums[n];
+                    if (sum == target) {
+                        List<Integer> temp = new ArrayList<>();
+                        Collections.addAll(temp, nums[i], nums[j], nums[m], nums[n]);
+                        if (keySet.contains(temp.toString())) {
+                            m++;
+                            n--;
+                            continue;
+                        }
+                        keySet.add(temp.toString());
+                        result.add(temp);
+                        m++;
+                        n--;
+                    } else if (sum < target) {
+                        m++;
+                    } else {
+                        n--;
+                    }
 
-        ret = target;
-        size = 4;
-
-        findClosedTarget(nums, 0, new ArrayList(), 0);
+                }
+            }
+        }
         return result;
     }
 }
