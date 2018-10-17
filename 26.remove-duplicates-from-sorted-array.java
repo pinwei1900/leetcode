@@ -51,19 +51,12 @@
  */
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int index = 0;
-
-        if (nums.length == 1) {
-            return 1;
-        }
-
+        int j = 0;
         for (int i = 1; i < nums.length; i++) {
-            if (nums[index] == nums[i]) {
-                continue;
-            } else {
-                nums[++index] = nums[i];
-            }
+            if (nums[i] != nums[j]) {
+                nums[++j] = nums[i];
+            }   
         }
-        return index + 1;
+        return j + 1;
     }
 }
