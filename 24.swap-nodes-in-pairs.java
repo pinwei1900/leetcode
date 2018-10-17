@@ -37,7 +37,6 @@ class Solution {
             return null;
         }
         ListNode list =  head;
-        ListNode pre = head;
         while (list != null && list.next != null) {
             int v = list.val;
             list.val = list.next.val;
