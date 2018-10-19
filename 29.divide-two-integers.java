@@ -57,7 +57,7 @@ class Solution {
     public int divide(int dividend, int divisor) {
         long numA = Math.abs(new Long(dividend));
         long numB = Math.abs(new Long(divisor));
-        boolean flag = (dividend >= 0 && divisor > 0) || (dividend < 0 && divisor < 0);
+        boolean flag = (dividend >= 0 && divisor > 0) || (dividend < 0 && divisor < 0);        
         Long result = divideR(numA, numB, 0);
         if (flag && (result > Integer.MAX_VALUE)) {
             return Integer.MAX_VALUE;
