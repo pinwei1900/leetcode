@@ -28,13 +28,20 @@ class Solution {
         nums[p2] = temp;
     }
 
+    /**
+     * 思路：
+     * 1，从后往前找逆序 
+     * 2，从这个逆序中找到一个大于当前位置元素的最小值 
+     * 3，交换这个最小值和当前位置元素
+     * 4，对当前位置以后的数据从小到大排序
+     * @param nums
+     */
     public void nextPermutation(int[] nums) {
         int len = nums.length;
         if (len == 0)
             return;
 
         int i = len - 1;
-
         boolean flag = false;
         for (; i > 0; i--) {
             if (nums[i] > nums[i - 1]) {
@@ -42,14 +49,12 @@ class Solution {
                 break;
             }
         }
-
         if (i == 0) {
             for (; i < len/2; i++) {
                 swap(nums ,i ,len -1 - i);
             }
             return;
         }
-
         int z = i;
         for (int j = i; j < len; j++) {
             if (nums[j] > nums[i - 1]) {
@@ -58,7 +63,6 @@ class Solution {
                 }
             }
         }
-
         swap(nums, i - 1, z);
         Arrays.sort(nums ,i ,len);
     }
