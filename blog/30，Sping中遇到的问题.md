@@ -12,6 +12,6 @@ spring.datasource.test1.password
 maven打包
 
 ```
-如果除了模块当前项目下没有
+根目录下没有source源文件的，应该使用pos类型进行打包
 ```
 
