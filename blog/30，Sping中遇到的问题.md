@@ -12,6 +12,15 @@ spring.datasource.test1.password
 maven打包
 
 ```
-根目录下没有source源文件的，应该使用pos类型进行打包
+根目录下没有source源文件的，应该使用pom类型进行打包
+有源文件的，可以使用jar进行打包
+```
+
+
+
+启动
+
+```
+启动的时候不能注入bean，只可以定义和生成bean
 ```
 
