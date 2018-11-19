@@ -1,0 +1,12 @@
+准备Linux命令启动http服务监听
+
+```shell
+ncat -lvp 80
+```
+
+如果需要使这个服务一直可以使用，但是这种方式可能会出现偶尔的服务不可用（error 503 服务不可用），只能支持比较少的请求操作（因为需要对每一个请求都会创建一个线程）
+
+```shell
+while true ; do { echo -ne "HTTP/1.0 200 OK\r\n\r\n"; cat dockerfile/mysql/my-master.cnf; } | nc -l -p 8080; done
+```
+
