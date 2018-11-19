@@ -1,11 +1,3 @@
-准备Linux命令启动http服务监听
-
-```shell
-ncat -lvp 80
-```
-
-
-
 由于Java原生API使用不便，考虑引入Apache HttpClient完成请求调用
 
 - 组装参数
