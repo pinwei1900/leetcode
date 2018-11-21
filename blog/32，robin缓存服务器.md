@@ -50,3 +50,61 @@
 - 实现内存快照+日志记录的方法作为重放日志记录的保证
 - 启动master的副本策略，使slave注册mater，使用心跳保证副本存活，并实现slave启动时请求交互流程
 
+
+
+
+
+数据格式：
+
+- 数据存取请求
+
+```protobuf
+message RobinRequest {
+  required int32 type = 1;
+  required string key = 2;
+  optional bytes content = 3;
+}
+
+message RobinResponse {
+  required int32 type = 1;
+  optional bytes content = 2;
+}
+```
+
+- 日志存储格式：   版本+请求记录
+
+```protobuf
+message RonbinRecord {
+  message RobinRequest {
+    required int32 type = 1;
+    required string key = 2;
+    optional bytes content = 3;
+  }
+  required int64 version = 1;
+  required RobinRequest request = 2;
+}
+```
+
+- slave请求数据同步格式 
+
+```protobuf
+message SlaveRequest {
+  required int64 version = 1;
+}
+
+message SlaveResponse {
+  message RobinRequest {
+    required int32 type = 1;
+    required string key = 2;
+    optional bytes content = 3;
+  }
+  required int64 version = 1;
+  required int32 op = 2;
+  repeated RobinRequest data = 3;
+}
+```
+
+
+
+
+
